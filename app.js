@@ -7,6 +7,13 @@ var logger = require('morgan');
 
 
 var app = express();
+app.all('*',function (req, res, next) {
+  res.header('Access-Control-Allow-Origin','*'); 
+  res.header('Access-Control-Allow-Headers','*'); //允许的请求头
+  res.header('Access-Control-Allow-Methods', '*'); //允许的请求方法
+  res.header('Access-Control-Allow-Credentials',true);  //允许携带cookies
+  next();
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
